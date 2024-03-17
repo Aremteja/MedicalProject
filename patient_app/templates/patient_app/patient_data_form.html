@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="row justify-content-center align-items-center h-30">
+            <div class="col-md-5">
+                <form method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>Enter health data</legend>
+                        {% if form.hb.errors %}
+                            {{form.hb.errors}}
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="id_hb" class="form-label">Heart Beat</label>
+                            <input type="number" name="hb" placeholder="heart beat count for 1 minute" id="id_hb" class="form-control mb-2">
+                        </div>
+                        {% if form.weight.errors %}
+                            {{form.weight.errors}}
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="id_weight" class="form-label">Weight</label>
+                            <input type="number" name="weight" placeholder="Enter your weight" id="id_weight" class="form-control mb-2">
+                        </div>
+                        {% if form.sleep_time.errors %}
+                            {{form.sleep_time.errors}}
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="id_sleep_time" class="form-label">Sleep Time</label>
+                            <input type="time" name="sleep_time"  id="id_sleep_time" class="form-control mb-2">
+                        </div>
+                    </fieldset>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

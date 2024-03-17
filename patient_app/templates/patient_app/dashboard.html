@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container mt-3">
+        {% if data %}
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-white align-items-center">
+                    <div class="d-flex align-items-center">
+                        <span class="mr-2">
+                            Your health status : 
+                        </span>
+                        <div class="rating text-gold">
+                            {% for i in "*****" %}
+                                {% if forloop.counter <= rating %}
+                                    <span>&#9734;</span> <!-- Filled star -->
+                                {% else %}
+                                    <span>&#9733;</span> <!-- Empty star -->
+                                {% endif %}
+                            {% endfor %} 
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center h-20">
+                <div class="col-md-6 col-sm-12"><canvas id="hbChart" class="h-100 w-100" ></canvas></div>
+                <div class="col-md-6 col-sm-12"><canvas id="sleepChart"  class="h-100 w-100"></canvas></div>
+                <div class="col-md-6 col-sm-12"><canvas id="weightChart"  class="h-100 w-100"></canvas></div>
+            
+            </div>
+        {% else %}
+            <div class="row h-30 justify-content-center align-items-center">
+                <div class="col-md-6 h3">
+                    Patient health data not available.
+                </div>
+            </div>
+        {% endif %}
+        <script>
+
+            // get data drom th django template
+            var healthReports = JSON.parse('{{data|escapejs}}');
+
+            if (!Array.isArray(healthReports)) {
+                // Handle error gracefully
+                console.error("Invalid health report data");
+            }
+
+            // extract necessary data for the charts
+            const labels = healthReports.map(report => new Date(report.date).toLocaleDateString());
+            const hbData = healthReports.map(report => report.hb);
+            const sleepTimeData = healthReports.map(report=>report.sleep_time);
+            const weightData = healthReports.map(report=>report.weight);
+
+            // construct the data object for chart.js
+            function createBarChart(canvasId, label, data) {
+            var ctx = document.getElementById(canvasId).getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y:{
+                             beginAtZero: true
+                        }   
+                    }
+                }
+            });
+        }
+
+            // create bar charts
+            createBarChart('hbChart', 'Heart Beat', hbData);
+            createBarChart('weightChart', 'Weight', weightData);
+            createBarChart('sleepChart', 'Sleep Time', sleepTimeData);
+
+        </script>
+    </div>
+{% endblock %}

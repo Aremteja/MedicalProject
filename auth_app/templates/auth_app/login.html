@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center h-30 align-items-center">
+            {% if user.is_authenticated %}
+                <div class="col h4">You have already logged in.</div>
+            {% else %}
+                <div class="col-md-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend class="text-white">Login to continue</legend>
+                            {% if error %}
+                                {{error}}
+                            {% endif %}
+                            {% if form.username.errors %}
+                                {{form.username.errors}}
+                            {% endif %}
+                            <div class="mb-3">
+                                <label for="id_username" class="form-label">Username</label>
+                                <input type="text" id="id_username" placeholder="Enter username" name="username" class="form-control">
+                            </div>
+                            {% if form.password.errors %}
+                                {{form.password.errors}}
+                            {% endif %}
+                            <div class="mb-3">
+                                <label for="id_pwd" class="form-label">Password</label>
+                                <input type="password" id="id_pwd" placeholder="Enter password" name="password" class="form-control">
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
