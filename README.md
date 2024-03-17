@@ -86,4 +86,42 @@ To ensure a clean and isolated environment for your Python project, it's recomme
 
 Now, you have successfully set up a Python virtual environment! Remember to activate the virtual environment whenever you work on your project.
 
+# Medical Project
+
+## Description
+
+Brief description of the project.
+
+## Usage
+
+### Access URLs
+Enter these urls after running the serverat the end of the port enter these url
+Eg :
+- **http:127.0.0.1:8000/index/**
+
+- **index/**: Open the index page of the website
+- **patient/patient-data-entry/**: It takes page where patient should enter his health details
+- **patient/dashboard/**: It shows the patient health status and reports in charts
+- **admin/**: For administration login
+- **authentication/registration/**; New patient Registration
+- **authentication/login/**; Patient Login
+- **authentication/logout/**; patient Logout
+
+## Functionalities
+
+### URL1
+
+Description of what users can do or access through URL1.
+
+### URL2
+
+Description of what users can do or access through URL2.
+
+### URL3
+
+Description of what users can do or access through URL3.
+
+## Additional Information
+
+Any additional information or notes.
 
