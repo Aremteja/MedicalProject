@@ -59,6 +59,9 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/admin/login/" class="nav-link text-white">Admin Panel</a>
+                        </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a href="{% url 'patient_app:dashboard' %}" class="nav-link text-white">Dashboard</a>
