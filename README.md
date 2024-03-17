@@ -111,19 +111,36 @@ enter the below urls in the place index in the above example url
 
 ## Functionalities
 
-### URL1
+### index/
 
-Description of what users can do or access through URL1.
+Index page is the starting page.
+It contains buttons redirecting to different functionalities.
+such as Login, Register, etc for non-authenticated-users
+For authenticated users it will display buttons for logout, dashboard, and patient-data-entry
 
-### URL2
+and also Admin button common to both authenticated and non-authenticated users
 
-Description of what users can do or access through URL2.
+### patient/patient-data-entry/
 
-### URL3
+This page shows a form to get the data from the client and store in the database
 
-Description of what users can do or access through URL3.
+### patient/dashboard/
 
-## Additional Information
+This page displays patient's health score rating  on basis of Machine Learning Model and Some charts regarding his sleep_time, weight, heart_beat 
 
-Any additional information or notes.
+### admin/
+
+To login to admin page, Only Super Users can have access to the Admin Panel
+
+### authentication/registration/
+
+Patient Registration
+
+### authentication/login/
+
+For Patient Login to access his dashboard, etc.
+
+### authentication/logout/
+
+To logout the user.
 
