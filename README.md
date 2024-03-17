@@ -99,6 +99,8 @@ Enter these urls after running the serverat the end of the port enter these url
 Eg :
 - **http:127.0.0.1:8000/index/**
 
+enter the below urls in the place index in the above example url
+
 - **index/**: Open the index page of the website
 - **patient/patient-data-entry/**: It takes page where patient should enter his health details
 - **patient/dashboard/**: It shows the patient health status and reports in charts
