@@ -11,10 +11,10 @@
                         </span>
                         <div class="rating text-gold">
                             {% for i in "*****" %}
-                                {% if forloop.counter <= rating %}
-                                    <span>&#9734;</span> <!-- Filled star -->
+                                {% if forloop.counter >= rating %}
+                                    <span style="font-size: 50px;">&#9733;</span> <!-- Filled star -->
                                 {% else %}
-                                    <span>&#9733;</span> <!-- Empty star -->
+                                    <span style="font-size: 50px;">&#9734;</span> <!-- Empty star -->
                                 {% endif %}
                             {% endfor %} 
                         </div>
